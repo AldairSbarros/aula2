@@ -1,20 +1,34 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from "react";
+import { View, Text, Button } from "react-native";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+
+export default class App extends Component{
+
+  constructor(props){
+    super(props);
+    this.state = {
+      name: "",
+     
+    };
+
+    this.entrar = this.entrar.bind(this);
+  }
+
+  entrar(name){
+    this.setState({
+      name: name
+    })
+  }
+
+  render(){
+    return(
+      <View style={{ marginTop: 50 }}>
+
+        <Button title="Entrar" onPress={ ()=> this.entrar('Aldair')}/>
+        <Text style={{ fontSize: 23, color: 'red', textAlign: 'center'}}>
+           {this.state.name}
+           </Text>
+      </View>
+    );
+  }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
